@@ -1,14 +1,6 @@
-/*
-Screen where the user taps a button and the number of taps is counted.
-Show "Taps" at the top, followed by the number of taps under it.
-Tap button is centered 25% from the bottom of the screen.
-Bottom bar has icons for taps(this page), upgrade, and settings.
- */
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../components/bottom_nav.dart';
 import '../components/settings_button.dart';
 import '../models/player_model.dart';
 
@@ -18,18 +10,16 @@ class Tapper extends StatefulWidget {
 }
 
 class _TapperState extends State<Tapper> {
-
   void tap() {
     Provider.of<PlayerModel>(context, listen: false).incrementTaps();
   }
 
-  void Function() routeTo(Widget screen) {
-    return () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => screen),
-      );
-    };
+  void upgradeTPT() {
+    Provider.of<PlayerModel>(context, listen: false).upgradeTPT();
+  }
+
+  void upgradeMultiplier() {
+    Provider.of<PlayerModel>(context, listen: false).upgradeMultiplier();
   }
 
   @override
@@ -50,7 +40,7 @@ class _TapperState extends State<Tapper> {
               ),
             ),
             Text(
-              '${Provider.of<PlayerModel>(context).taps}',
+              "${Provider.of<PlayerModel>(context, listen: false).taps}",
               style: TextStyle(
                 fontSize: 50,
                 fontWeight: FontWeight.bold,
@@ -62,10 +52,74 @@ class _TapperState extends State<Tapper> {
               textColor: Colors.white,
               onPressed: tap,
             ),
+            Text(
+              'Taps per tap',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '${Provider.of<PlayerModel>(context).tapsPerTap} -> ${Provider.of<PlayerModel>(context, listen: false).tapsPerTap + 1}',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "${Provider.of<PlayerModel>(context, listen: false).tapsPerTapCost}",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: upgradeTPT,
+                  child: Text('Upgrade'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Multiplier',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '${Provider.of<PlayerModel>(context).multiplier} -> ${Provider.of<PlayerModel>(context, listen: false).multiplier + 1}',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                    "${Provider.of<PlayerModel>(context).multiplierCost}",
+                  style: TextStyle(fontSize: 20),
+                ),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: upgradeMultiplier,
+                  child: Text('Upgrade'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNav(),
     );
   }
 }

@@ -1,9 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:audioplayers/audioplayers.dart';
-
-final player = AudioPlayer();
 
 void Function() routeTo(BuildContext context, Widget screen) {
   return () {

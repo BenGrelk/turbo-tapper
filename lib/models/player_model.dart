@@ -19,17 +19,19 @@ class PlayerModel extends ChangeNotifier {
   int get multiplierCost => _multiplierCost;
 
   int _calculateTPTCost() {
-    return _tapsPerTapCost * _tapsPerTap * 1.5 as int;
+    double result = _tapsPerTapCost * _tapsPerTap * 1.5;
+    return result.round();
   }
 
   int _calculateMultiplierCost() {
-    return _multiplierCost * _multiplier * 1.5 as int;
+    double result = _multiplierCost * _multiplier * 1.5;
+    return result.round();
   }
 
   void incrementTaps() {
     _taps += _tapsPerTap * _multiplier;
 
-    playPopSound();
+    // playPopSound();
 
     notifyListeners();
   }
