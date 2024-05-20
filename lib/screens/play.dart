@@ -1,29 +1,16 @@
 import 'package:turbo_tapper/screens/settings.dart';
 import 'package:flutter/material.dart';
+import 'package:turbo_tapper/screens/tapper.dart';
 
 import '../components/settings_button.dart';
+import '../utils.dart';
 
 class Play extends StatefulWidget {
   @override
   _PlayState createState() => _PlayState();
 }
 
-/*
-  Play screen with a single column. Name is "Turbo Tapper", followeb by play button.
-  Turbo is blue, tappper is red.
-  play button is centered
- */
-
 class _PlayState extends State<Play> {
-  void Function() routeTo(Widget screen) {
-    return () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => screen),
-      );
-    };
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,12 +38,10 @@ class _PlayState extends State<Play> {
               text: 'Play',
               backgroundColor: Colors.indigo,
               textColor: Colors.white,
-              onPressed: () {
-                print('Play button pressed');
-              },
+              onPressed: routeTo(context, Tapper()),
             ),
             SettingsButton(
-                onPressed: routeTo(Settings()),
+                onPressed: routeTo(context, Settings()),
                 backgroundColor: Colors.indigo,
                 textColor: Colors.white,
                 text: "Settings")

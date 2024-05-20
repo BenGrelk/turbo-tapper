@@ -35,6 +35,8 @@ class _SettingsState extends State<Settings> {
     final directory = await getApplicationDocumentsDirectory();
     final file = File('${directory.path}/settings.json');
     await file.writeAsString(jsonEncode(await settingsFuture));
+
+    Navigator.pop(context);
   }
 
   @override
