@@ -1,16 +1,9 @@
-# birthday_pizza
+# Turbo Tapper
 
-A new Flutter application.
+## Description
+Turbo Tapper is a cookie-clicker type game, but with tapping instead of clicking. The goal is to tap 
+as fast as you can to get the highest score possible. The player can spend their taps on upgrades to
+improve their tapping speed.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Attribution
+Bubble Pop SFX by sarooptech -- https://freesound.org/s/718438/ -- License: Creative Commons 0

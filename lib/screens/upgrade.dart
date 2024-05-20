@@ -38,9 +38,41 @@ class _UpgradeState extends State<Upgrade> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Cost: ${Provider.of<PlayerModel>(context).tapsPerTapCost}"),
+                SizedBox(width: 20),
                 ElevatedButton(
                   onPressed: () {
                     Provider.of<PlayerModel>(context, listen: false).upgradeTPT();
+                  },
+                  child: Text('Upgrade'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Text(
+              'Multiplier',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              '${Provider.of<PlayerModel>(context).multiplier}',
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Cost: ${Provider.of<PlayerModel>(context).multiplierCost}"),
+                SizedBox(width: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    Provider.of<PlayerModel>(context, listen: false).upgradeMultiplier();
                   },
                   child: Text('Upgrade'),
                   style: ElevatedButton.styleFrom(

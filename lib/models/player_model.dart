@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:turbo_tapper/utils.dart';
 
 class PlayerModel extends ChangeNotifier {
   int _taps = 0;
@@ -27,6 +28,9 @@ class PlayerModel extends ChangeNotifier {
 
   void incrementTaps() {
     _taps += _tapsPerTap * _multiplier;
+
+    playPopSound();
+
     notifyListeners();
   }
 
